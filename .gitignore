@@ -1,0 +1,76 @@
+# Compiled Python files
+*.pyc
+**/*.pyc
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.pyd
+*.dll
+*.so
+
+# Logs
+*.log
+
+# macOS files
+.DS_Store
+
+# PyCharm files
+.idea/
+
+# VSCode files
+.vscode/
+
+# Dependency directories
+venv/
+.venv/
+env/
+env.bak/
+env2/
+env3/
+env27/
+dist/
+build/
+*.egg-info/
+
+
+# Local development configuration files
+.env
+.env.local
+.env.*.local
+
+# Build artifacts
+**/*.egg
+**/*.egg-info
+**/*.egg-info/
+*.egg
+*.egg-info
+*.egg-info/
+dist/
+build/
+MANIFEST
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Tox
+.tox/
+.tox.*
+
+# Coverage
+.coverage
+htmlcov/
+.coverage.*.xml
+.coverage.*.json
+.cov
+
+# Pytest
+pytest_cache/
+
+credentials.json
+.ruff_cache/

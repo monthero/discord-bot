@@ -1,0 +1,109 @@
+[tool.poetry]
+name = "nova-bot"
+version = "0.1.0"
+description = "A bot for nova's discord server"
+authors = ["Vasco Monteiro <vmnokk@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+discord-py = "^2.3.1"
+python-dotenv = "^1.0.0"
+google-cloud-translate = "^3.11.2"
+pydantic = "^2.0.2"
+pydantic-settings = "^2.0.1"
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.0.277"
+black = "^23.3.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.black]
+line-length = 88
+target-version = ['py311']
+atomic = true
+include = '\.pyi?$'
+exclude = '''
+/(
+  | \.eggs
+  | \.git
+  | __pypackages__
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+)/
+'''
+
+[tool.ruff]
+fix = false
+show-fixes = true
+target-version = "py311"
+format = "grouped"
+select = [
+  "B",   # flake8-bugbear
+  "BLE", # flake8-blind-except
+  "C90", # mccabe
+  "DJ",  # flake8-django
+  "E",   # pycodestyle errors
+  "ERA", # eradicate
+  "F",   # pyflakes
+  "PGH", # pygrep-hooks
+  "PIE", # flake8-pie
+  "PT",  # flake8-pytest-style
+  "Q",   # flake8-quotes
+  "T20", # flake8-print
+  "W",   # pycodestyle warnings
+]
+ignore = [
+  "B008",  # do not perform function calls in argument defaults
+  "B011",  # assert-false
+  "B018",  # useless-expression
+  "B904",  # raise-without-from-inside-except
+  "B905",  # zip-without-explicit-strict
+  "DJ001", # django-nullable-model-string-field
+  "PT004", # pytest-missing-fixture-name-underscore
+]
+src = ["src", "tests"]
+line-length = 88
+extend-exclude = [".pip", ".venv", "__pypackages__", "docker-compose"]
+unfixable = ["B", "ERA", "PIE", "PT"]
+
+[tool.ruff.flake8-builtins]
+builtins-ignorelist = ["id"]
+
+[tool.ruff.flake8-comprehensions]
+allow-dict-calls-with-keyword-arguments = true
+
+[tool.ruff.mccabe]
+max-complexity = 16
+
+[tool.ruff.isort]
+order-by-type = true
+known-first-party = ["src", "tests"]
+known-third-party = ["fastapi", "firebase_admin", "pydantic"]
+force-wrap-aliases = true
+combine-as-imports = true
+lines-after-imports = 2
+no-lines-before = ["standard-library"]
+relative-imports-order = "furthest-to-closest"
+
+[tool.ruff.flake8-pytest-style]
+fixture-parentheses = false
+mark-parentheses = false
+parametrize-names-type = "csv"
+parametrize-values-type = "list"
+parametrize-values-row-type = "tuple"
+
+[tool.ruff.flake8-quotes]
+docstring-quotes = "double"
+inline-quotes = "double"
+multiline-quotes = "double"
+
+[tool.ruff.flake8-annotations]
+allow-star-arg-any = true
